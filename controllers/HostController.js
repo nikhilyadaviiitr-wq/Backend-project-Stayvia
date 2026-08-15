@@ -1,7 +1,5 @@
 const Home = require("../models/home");
-const fs = require("fs");
-const path = require('path');
-const rootDir = require('../utils/rootpath');
+const cloudinary = require("../utils/cloudinary");
 
 exports.getAddHome = function(req, res, next) {
     res.render("host/edit-home", { pageTitle: "Add Home", editing: false, isLoggedIn: req.session.isLoggedIn, 
@@ -11,10 +9,10 @@ exports.getAddHome = function(req, res, next) {
 exports.postAddHome = function(req, res, next) {
     console.log(req.body);
     const { HouseName, Price, Location, Rating, PhotoURL, Description } = req.body;
-    // If a file was uploaded, use its filename to construct a public URL
+    // If a file was uploaded via Cloudinary, req.file.path is the Cloudinary URL
     let photoUrlValue = PhotoURL;
     if (req.file) {
-        photoUrlValue = `/uploads/${req.file.filename}`;
+        photoUrlValue = req.file.path;
     }
     const home = new Home({ HouseName, Price, Location, Rating, PhotoURL: photoUrlValue, Description });
     home.save().then(() => {
@@ -51,7 +49,7 @@ exports.getEditHome = (req, res, next) => {
 
 exports.postEditHome = function(req, res, next) {
     const { id, HouseName, Price, Location, Rating, PhotoURL, Description } = req.body;
-    Home.findById(id).then((home) => {
+    Home.findById(id).then(async (home) => {
         if (!home) {
             console.log("Home not found for updating.");
             return res.redirect("/host/host-homes");
@@ -64,19 +62,18 @@ exports.postEditHome = function(req, res, next) {
         home.Description = Description;
 
         if (req.file) {
-            if (home.PhotoURL) {
-                const existing = home.PhotoURL.startsWith('/uploads/')
-                    ? home.PhotoURL.replace('/uploads/', '')
-                    : path.basename(home.PhotoURL);
-                const existingPath = path.join(rootDir, 'uploads', existing);
-
-                fs.unlink(existingPath, (err) => {
-                    if (err && err.code !== 'ENOENT') {
-                        console.log("Error while deleting file ", err);
-                    }
-                });
+            // Delete old Cloudinary image if it exists
+            if (home.PhotoURL && home.PhotoURL.includes("cloudinary.com")) {
+                try {
+                    const parts = home.PhotoURL.split("/");
+                    const fileWithExt = parts[parts.length - 1];
+                    const publicId = "stayvia-homes/" + fileWithExt.split(".")[0];
+                    await cloudinary.uploader.destroy(publicId);
+                } catch (err) {
+                    console.log("Error while deleting old Cloudinary image", err);
+                }
             }
-            home.PhotoURL = `/uploads/${req.file.filename}`;
+            home.PhotoURL = req.file.path;
         } else if (PhotoURL && PhotoURL.trim() !== '') {
             home.PhotoURL = PhotoURL;
         }

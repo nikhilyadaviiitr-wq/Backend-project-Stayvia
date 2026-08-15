@@ -1,12 +1,20 @@
 const express = require("express");
 const multer = require('multer');
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("../../utils/cloudinary");
 const home = require("../HostController");
 const HostRouter = express.Router();
 
-// store uploads in uploads/ directory
-const upload = multer({ dest: 'uploads/' });
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "stayvia-homes",
+    allowed_formats: ["jpg", "png", "jpeg"],
+  },
+});
 
-// Removed "/store/..." from all URLs as instructed
+const upload = multer({ storage: storage });
+
 HostRouter.get('/add-home', home.getAddHome);
 HostRouter.post('/add-home', upload.single('Photo'), home.postAddHome);
 HostRouter.get('/host-homes', home.getHostHomes);
