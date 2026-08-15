@@ -1,7 +1,7 @@
 const Home = require("../models/home");
 const fs = require("fs");
 const path = require('path');
-const rootDir = require('../.gitignore/utils/rootpath');
+const rootDir = require('../utils/rootpath');
 
 exports.getAddHome = function(req, res, next) {
     res.render("host/edit-home", { pageTitle: "Add Home", editing: false, isLoggedIn: req.session.isLoggedIn, 
