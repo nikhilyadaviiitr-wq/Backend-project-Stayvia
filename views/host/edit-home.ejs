@@ -1,0 +1,397 @@
+<%- include("../partials/head") %>
+<%- include("../partials/nav") %>
+</header>
+
+<div class="home-page">
+
+    <!-- =========================================
+         DECORATIVE HOME ICON
+    ========================================== -->
+
+    <div class="home-icon">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 64 64"
+             fill="none">
+
+            <rect
+                x="8"
+                y="26"
+                width="48"
+                height="28"
+                rx="6"
+                fill="#fff"
+                fill-opacity="0.10"
+            />
+
+            <path
+                d="M32 11L8 30.5L11.2 34L32 18.5L52.8 34L56 30.5L32 11Z"
+                fill="#a781fa"
+            />
+
+            <rect
+                x="24.25"
+                y="35.05"
+                width="15.5"
+                height="15.5"
+                rx="2.2"
+                fill="#23deff"
+                fill-opacity="0.35"
+            />
+
+            <rect
+                x="26.5"
+                y="37.5"
+                width="11"
+                height="11"
+                rx="1"
+                fill="#7d1cff"
+                fill-opacity="0.13"
+            />
+
+            <circle
+                cx="42.5"
+                cy="31.5"
+                r="2"
+                fill="#fbe600"
+                fill-opacity="0.67"
+            />
+
+            <rect
+                x="11"
+                y="27"
+                width="42"
+                height="27"
+                rx="5"
+                stroke="#7d1cff"
+                stroke-width="1.7"
+            />
+
+        </svg>
+    </div>
+
+
+    <!-- =========================================
+         PAGE HEADING
+    ========================================== -->
+
+    <h1>
+
+        <span>
+
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+            >
+                <path
+                    d="M10 .5l9 7.5v1.185a1.5 1.5 0 01-.605 1.213l-7.2 5.41A2.5 2.5 0 0110 18.5a2.5 2.5 0 01-1.195-2.692l-7.2-5.41A1.5 1.5 0 012 9.185V8L10 .5z"
+                />
+            </svg>
+
+            <%= editing ? "Edit" : "Register" %> Your Home
+
+        </span>
+
+    </h1>
+
+
+    <!-- =========================================
+         HOME FORM
+    ========================================== -->
+
+    <form
+        action="/host/<%= editing ? "edit-home" : "add-home" %>"
+        method="POST"
+        enctype="multipart/form-data"
+        class="home-form"
+    >
+
+        <!-- Hidden ID for editing -->
+        <input
+            type="hidden"
+            name="id"
+            value="<%= editing ? home.id : '' %>"
+        />
+
+
+        <!-- =====================================
+             HOUSE NAME
+        ====================================== -->
+
+        <div class="form-field">
+
+            <label for="HouseName">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.5 11.5L12 5l9.5 6.5m-7 10V12H9v9M3 21V9.5l9-6 9 6V21"
+                    />
+                </svg>
+
+                House Name
+
+            </label>
+
+            <input
+                type="text"
+                name="HouseName"
+                id="HouseName"
+                placeholder="Enter the name of your house"
+                value="<%= editing ? home.HouseName : "" %>"
+                required
+            >
+
+        </div>
+
+
+        <!-- =====================================
+             PRICE
+        ====================================== -->
+
+        <div class="form-field">
+
+            <label for="Price">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v8m0 0c-1.657 0-3-2.239-3-5 0-2.761 1.343-5 3-5s3 2.239 3 5c0 2.761-1.343 5-3 5zm0 0v3m-4 2c.074-.34.187-.665.337-.971"
+                    />
+                </svg>
+
+                Price
+
+                <span>
+                    (per night, in ₹)
+                </span>
+
+            </label>
+
+            <input
+                type="number"
+                name="Price"
+                id="Price"
+                step="0.01"
+                min="0"
+                placeholder="Enter price per night"
+                value="<%= editing ? home.Price : "" %>"
+                required
+            >
+
+        </div>
+
+
+        <!-- =====================================
+             LOCATION
+        ====================================== -->
+
+        <div class="form-field">
+
+            <label for="Location">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 2C8.134 2 5 5.134 5 9c0 3.866 5.207 11.295 6.156 12.523a1 1 0 001.689 0C13.793 20.295 19 12.866 19 9c0-3.866-3.134-7-7-7zm0 5a2 2 0 100 4 2 2 0 000-4z"
+                    />
+                </svg>
+
+                Location
+
+            </label>
+
+            <input
+                type="text"
+                name="Location"
+                id="Location"
+                placeholder="Enter house location"
+                value="<%= editing ? home.Location : "" %>"
+                required
+            >
+
+        </div>
+
+
+        <!-- =====================================
+             RATING
+        ====================================== -->
+
+        <div class="form-field">
+
+            <label for="Rating">
+
+                <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                >
+                    <path
+                        d="M10 15.27L16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"
+                    />
+                </svg>
+
+                Rating
+
+                <span>
+                    (0–5 stars)
+                </span>
+
+            </label>
+
+            <input
+                type="number"
+                name="Rating"
+                id="Rating"
+                step="0.1"
+                min="0"
+                max="5"
+                placeholder="Enter house rating"
+                value="<%= editing ? home.Rating : "" %>"
+                required
+            >
+
+        </div>
+
+
+        <!-- =====================================
+             PHOTO URL
+        ====================================== -->
+
+        <div class="form-field">
+
+            <label for="PhotoURL">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M21 15V5a2 2 0 00-2-2H5a2 2 0 00-2 2v16a2 2 0 002 2h14a2 2 0 002-2v-4m-4-5l4 4-4 4M8 7h.01M12 15l-5-5 3.5 3.5a1.5 1.5 0 002.122 0L19 8"
+                    />
+                </svg>
+
+                Photo
+
+            </label>
+
+            <input
+                type="file"
+                name="Photo"
+                id="Photo"
+            >
+
+        </div>
+
+
+        <!-- =====================================
+             DESCRIPTION
+        ====================================== -->
+
+        <div class="form-field description-field">
+
+            <label for="Description">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 11H5M19 11a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v2a2 2 0 002 2m14 0v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2"
+                    />
+                </svg>
+
+                Description
+
+            </label>
+
+            <textarea
+                name="Description"
+                id="Description"
+                placeholder="Enter a description of your house"
+                required
+            ><%= editing ? home.Description : "" %></textarea>
+
+        </div>
+
+
+        <!-- =====================================
+             SUBMIT BUTTON
+        ====================================== -->
+
+        <button
+            type="submit"
+            class="home-submit"
+        >
+
+            <svg
+                viewBox="0 0 20 20"
+                fill="currentColor"
+            >
+                <path
+                    d="M10 1.6l8.5 7.1a1 1 0 01-1.2 1.6l-.3-.2V18a1 1 0 01-1 1h-3.5V13A2.5 2.5 0 009.5 10.5h-1A2.5 2.5 0 006 13v6H2.5a1 1 0 01-1-1V10.1l-.3.2A1 1 0 01.5 8.7L9 1.6a1 1 0 011 0z"
+                />
+            </svg>
+
+            <%= editing ? "Update" : "Register" %> Home
+
+        </button>
+
+    </form>
+
+
+    <!-- =========================================
+         BACK TO HOSTED HOMES
+    ========================================== -->
+
+    <a
+        href="/host/host-homes"
+        class="back-link"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+            />
+        </svg>
+
+        Back to hosted homes
+
+    </a>
+
+</div>
+
+</body>
+</html>

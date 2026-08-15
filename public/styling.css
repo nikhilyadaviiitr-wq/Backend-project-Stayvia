@@ -1,0 +1,2175 @@
+@import "tailwindcss";
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Poppins', 'Montserrat', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+
+  min-height: 100vh;
+
+  background:
+    radial-gradient(circle at 15% 85%, rgba(38, 45, 180, 0.25), transparent 32%),
+    radial-gradient(circle at 90% 35%, rgba(130, 20, 190, 0.25), transparent 32%),
+    linear-gradient(120deg, #0d1025 0%, #11132b 48%, #160d22 100%);
+
+  color: #e2e2e2;
+  letter-spacing: 0.01em;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+  width: 100%;
+  margin: 0;
+  padding: 1rem 2.5rem;
+
+  background: rgba(12, 14, 30, 0.88);
+
+  border-bottom: 2px solid #7d1cff;
+
+  box-shadow:
+    0 5px 25px rgba(63, 17, 110, 0.18),
+    0 2px 12px rgba(110, 32, 255, 0.22);
+
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  backdrop-filter: blur(14px) saturate(160%);
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+nav {
+  width: 100%;
+  max-width: none;
+
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(20, 19, 39, 0.72);
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 2px 18px rgba(85, 35, 142, 0.16);
+
+  backdrop-filter: blur(8px) saturate(130%);
+}
+
+
+nav a {
+  color: #e3d0ff;
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+
+  font-size: 1.07rem;
+
+  padding: 0.65rem 1.3rem;
+
+  border-radius: 1.8em;
+
+  position: relative;
+
+  background: rgba(75, 43, 129, 0.10);
+
+  box-shadow:
+    0 1.5px 8px rgba(125, 28, 255, 0.07);
+
+  transition:
+    background 0.2s,
+    color 0.18s,
+    box-shadow 0.18s,
+    transform 0.13s;
+}
+
+
+nav a:hover,
+nav a:focus {
+  background:
+    linear-gradient(
+      100deg,
+      #2e0a40 20%,
+      #351b88 100%
+    );
+
+  color: #c689fa;
+
+  box-shadow:
+    0 4px 18px rgba(162, 36, 255, 0.25);
+
+  transform: translateY(-1px) scale(1.04);
+}
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+main {
+    width: 100%;
+    max-width: none;
+
+    min-height: calc(100vh - 90px);
+
+    margin: 0;
+    padding: 3rem 4rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1.5rem;
+
+    background:
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(125, 28, 255, 0.20),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(35, 60, 220, 0.18),
+            transparent 32%
+        ),
+        linear-gradient(
+            120deg,
+            #0d1025 0%,
+            #11142d 50%,
+            #1b0d2b 100%
+        );
+
+    border-radius: 0;
+
+    box-shadow: none;
+}
+
+
+/* =========================================
+   ADD HOME / CENTER PAGE
+========================================= */
+
+main.center {
+    width: 100%;
+    max-width: none;
+
+    min-height: calc(100vh - 90px);
+
+    margin: 0;
+
+    padding:
+        2.5rem
+        4rem
+        4rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1.5rem;
+
+    background:
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(125, 28, 255, 0.22),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 85%,
+            rgba(30, 55, 210, 0.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #0d1025 0%,
+            #11142d 50%,
+            #1a0d29 100%
+        );
+
+    border-radius: 0;
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+h1,
+h2,
+h3,
+h4 {
+  color: #c689fa;
+
+  font-family:
+    'Poppins',
+    'Montserrat',
+    'Inter',
+    sans-serif;
+
+  text-shadow:
+    0 2px 17px rgba(134, 51, 255, 0.18);
+
+  font-weight: 800;
+
+  letter-spacing: 0.005em;
+}
+
+
+h1 {
+  font-size: 2.45rem;
+
+  font-weight: 900;
+
+  line-height: 1.14;
+
+  margin: 1rem 0 1.6rem;
+
+  text-align: center;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      94deg,
+      #c689fa 0%,
+      #9f58ff 42%,
+      #23deff 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  letter-spacing: 0.019em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   PARAGRAPH / EMPTY STATE
+========================================= */
+
+main p {
+  color: #b8a9e8;
+
+  font-family:
+    'Inter',
+    'Poppins',
+    sans-serif;
+
+  font-size: 1.08rem;
+
+  max-width: 850px;
+
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(72, 45, 120, 0.28),
+      rgba(48, 28, 73, 0.42)
+    );
+
+  border: 1px solid rgba(125, 28, 255, 0.22);
+
+  border-radius: 18px;
+
+  padding: 2rem;
+
+  letter-spacing: 0.012em;
+
+  box-shadow:
+    0 4px 20px rgba(125, 28, 255, 0.07);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+a.cta,
+button:not(.book-btn) {
+  display: inline-block;
+
+  font-family:
+    'Poppins',
+    'Montserrat',
+    'Inter',
+    sans-serif;
+
+  background:
+    linear-gradient(
+      96deg,
+      #7d1cff 0%,
+      #a781fa 60%,
+      #23deff 100%
+    );
+
+  color: #181828;
+
+  font-weight: 800;
+
+  padding: 1rem 2.2rem;
+
+  border-radius: 2.3em;
+
+  border: none;
+
+  font-size: 1.16rem;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 33px rgba(125, 28, 255, 0.16),
+    0 1.7px 9px rgba(35, 222, 255, 0.09);
+
+  transition:
+    background 0.18s,
+    box-shadow 0.18s,
+    transform 0.15s;
+
+  outline: none;
+
+  letter-spacing: 0.05em;
+}
+
+
+a.cta:hover,
+button:hover,
+a.cta:focus,
+button:focus {
+  background:
+    linear-gradient(
+      94deg,
+      #23deff 0%,
+      #a781fa 80%,
+      #7d1cff 100%
+    );
+
+  color: white;
+
+  box-shadow:
+    0 9px 30px rgba(162, 36, 255, 0.25);
+
+  transform:
+    scale(1.04)
+    translateY(-2px);
+}
+
+
+/* =========================================
+   FORMS
+========================================= */
+
+.home-form  {
+  display: flex;
+
+  flex-direction: row;
+
+  flex-wrap: wrap;
+
+  align-items: flex-start;
+
+  gap: 1.5rem 1rem;
+
+  margin-top: 2.5rem;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(25, 22, 40, 0.92),
+      rgba(72, 30, 130, 0.13)
+    );
+
+  padding: 2.8rem;
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 9px 34px rgba(125, 28, 255, 0.09),
+    0 2px 11px rgba(35, 222, 255, 0.08);
+
+  width: 100%;
+
+  max-width: 700px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  border: 1px solid rgba(125, 28, 255, 0.65);
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+input,
+textarea,
+select {
+  background:
+    linear-gradient(
+      92deg,
+      #18142a 70%,
+      #22203a 100%
+    );
+
+  color: #cfcbee;
+
+  padding: 1.1rem 1.4rem;
+
+  border:
+    1.5px solid #513079;
+
+  border-radius: 16px;
+
+  width: 100%;
+
+  font-size: 1rem;
+
+  font-family:
+    'Inter',
+    'Montserrat',
+    'Poppins',
+    sans-serif;
+
+  outline: none;
+
+  box-shadow:
+    0 2px 12px rgba(125, 28, 255, 0.07);
+
+  transition:
+    border-color .17s,
+    box-shadow .13s,
+    background .17s;
+
+  min-width: 0;
+}
+
+
+input::placeholder,
+textarea::placeholder {
+  color: #bcaeff;
+  opacity: 1;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus {
+  background: #1d1132;
+
+  color: white;
+
+  border-color: #22e0ff;
+
+  box-shadow:
+    0 0 0 3px rgba(35, 222, 255, 0.14),
+    0 2px 18px rgba(125, 28, 255, 0.10);
+}
+
+
+/* =========================================
+   HORIZONTAL LINE
+========================================= */
+
+hr {
+  border: none;
+
+  border-top:
+    2px solid #7d1cff;
+
+  margin: 2.9rem 0;
+
+  width: 91%;
+
+  border-radius: 3px;
+
+  box-shadow:
+    0 2.5px 12px rgba(125, 28, 255, 0.13),
+    0 0 4px rgba(35, 222, 255, 0.07);
+}
+
+
+/* =========================================
+   FAVOURITE HEART
+========================================= */
+
+.favourite-btn:hover .heart-icon {
+  fill: #ff3b5c;
+  stroke: #ff3b5c;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+  header {
+    padding: 0.8rem 1rem;
+  }
+
+  nav {
+    gap: 0.5rem;
+
+    overflow-x: auto;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+
+    padding:
+      0.55rem 0.9rem;
+
+    white-space: nowrap;
+  }
+
+  main {
+    padding:
+      4rem 1.5rem 3rem;
+
+    min-height:
+      calc(100vh - 75px);
+  }
+
+  form {
+    flex-direction: column;
+
+    gap: 1.3rem;
+
+    max-width: 520px;
+  }
+
+  form > * {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  header {
+    padding: 0.6rem;
+  }
+
+  nav {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 0.5rem;
+
+    padding: 0.7rem;
+
+    border-radius: 14px;
+  }
+
+  nav a {
+    text-align: center;
+  }
+
+  main,
+  main.center {
+    padding:
+      3rem 0.8rem 2rem;
+
+    min-height:
+      calc(100vh - 70px);
+
+    margin: 0;
+
+    border-radius: 0;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+
+    background: none;
+
+    color: #23deff;
+
+    -webkit-text-fill-color: #23deff;
+  }
+
+  main p {
+    font-size: 0.95rem;
+
+    padding: 1.4rem 1rem;
+  }
+
+  form {
+    padding: 1.3rem;
+
+    border-radius: 20px;
+
+    max-width: 100%;
+  }
+}
+/* =========================================================
+   ADD / EDIT HOME PAGE
+========================================================= */
+
+.home-page {
+    width: 100%;
+    min-height: calc(100vh - 90px);
+
+    margin: 0;
+    padding: 2.5rem 5vw 4rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(125, 28, 255, 0.20),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 10% 85%,
+            rgba(35, 70, 220, 0.20),
+            transparent 32%
+        ),
+        linear-gradient(
+            120deg,
+            #0b0e21 0%,
+            #11142d 48%,
+            #210d35 100%
+        );
+
+    color: #e2e2e2;
+}
+
+
+/* =========================================================
+   TOP HOUSE ICON
+========================================================= */
+
+.home-icon {
+    width: 72px;
+    height: 72px;
+
+    margin-bottom: 0.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-icon svg {
+    width: 100%;
+    height: 100%;
+
+    filter:
+        drop-shadow(0 0 12px rgba(125, 28, 255, 0.55))
+        drop-shadow(0 0 20px rgba(35, 222, 255, 0.15));
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.home-page > h1 {
+    margin: 0 0 2rem 0;
+
+    font-size: clamp(2rem, 3.2vw, 3rem);
+
+    font-weight: 900;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            95deg,
+            #c689fa 0%,
+            #9f58ff 45%,
+            #23deff 100%
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.025em;
+
+    text-shadow:
+        0 0 25px rgba(125, 28, 255, 0.18);
+}
+
+
+.home-page > h1 span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+
+.home-page > h1 svg {
+    width: 30px;
+    height: 30px;
+
+    color: #7d1cff;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.home-form {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 2rem 2.5rem;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 1.5rem 2rem;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(24, 22, 43, 0.90),
+            rgba(40, 20, 65, 0.72)
+        );
+
+    border: 1px solid rgba(125, 28, 255, 0.55);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.28),
+        0 0 30px rgba(125, 28, 255, 0.08);
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* =========================================================
+   FORM FIELDS
+========================================================= */
+
+.home-form > div {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5rem;
+}
+
+
+/* Labels */
+
+.home-form label {
+
+    display: flex;
+    align-items: center;
+
+    gap: 0.4rem;
+
+    color: #c0b2e8;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.01em;
+}
+
+
+/* Icons inside labels */
+
+.home-form label svg {
+
+    width: 22px;
+    height: 22px;
+
+    flex-shrink: 0;
+}
+
+
+/* Inputs */
+
+.home-form input,
+.home-form textarea,
+.home-form select {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 0.9rem 1rem;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(125, 28, 255, 0.55);
+
+    background:
+        linear-gradient(
+            100deg,
+            #17152b,
+            #201a36
+        );
+
+    color: #eeeaff;
+
+    font-family:
+        'Inter',
+        'Poppins',
+        sans-serif;
+
+    font-size: 1rem;
+
+    outline: none;
+
+    box-shadow:
+        inset 0 1px 5px rgba(0, 0, 0, 0.12);
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        transform 0.2s;
+}
+
+
+.home-form input::placeholder,
+.home-form textarea::placeholder {
+
+    color: #9688bd;
+
+    opacity: 1;
+}
+
+
+.home-form input:focus,
+.home-form textarea:focus,
+.home-form select:focus {
+
+    border-color: #23deff;
+
+    box-shadow:
+        0 0 0 3px rgba(35, 222, 255, 0.10),
+        0 0 18px rgba(125, 28, 255, 0.12);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.home-form > div:has(#Description) {
+
+    grid-column: span 2;
+}
+
+
+.home-form textarea {
+
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.home-form > button {
+
+    grid-column: 1 / -1;
+
+    width: min(350px, 100%);
+
+    justify-self: center;
+
+    margin-top: 0.2rem;
+
+    padding: 0.95rem 2rem;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            95deg,
+            #7d1cff,
+            #a781fa,
+            #23deff
+        );
+
+    color: white;
+
+    font-size: 1.05rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.05em;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(125, 28, 255, 0.25);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        filter 0.2s;
+}
+
+
+.home-form > button:hover {
+
+    transform: translateY(-2px);
+
+    filter: brightness(1.1);
+
+    box-shadow:
+        0 12px 30px rgba(125, 28, 255, 0.35);
+}
+
+
+/* =========================================================
+   BACK LINK
+========================================================= */
+
+.home-page > a {
+
+    margin-top: 1.3rem;
+
+    color: #a781fa;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: color 0.2s;
+}
+
+
+.home-page > a:hover {
+
+    color: #23deff;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .home-page {
+
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .home-form {
+
+        grid-template-columns: 1fr;
+
+        padding: 1.7rem;
+
+    }
+
+    .home-form > div:has(#Description) {
+
+        grid-column: span 1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .home-page {
+
+        padding:
+            1.5rem 1rem 3rem;
+    }
+
+    .home-icon {
+
+        width: 58px;
+        height: 58px;
+    }
+
+    .home-page > h1 {
+
+        font-size: 1.6rem;
+
+        margin-bottom: 1.5rem;
+    }
+
+    .home-page > h1 span {
+
+        gap: 0.4rem;
+    }
+
+    .home-page > h1 svg {
+
+        width: 22px;
+        height: 22px;
+    }
+
+    .home-form {
+
+        padding: 1.3rem;
+
+        border-radius: 18px;
+
+        gap: 1.2rem;
+    }
+
+    .home-form input,
+    .home-form textarea {
+
+        padding: 0.8rem 0.9rem;
+
+        font-size: 0.95rem;
+    }
+}
+
+/* =========================================================
+   DESKTOP HOME FORM — FULL WIDTH HORIZONTAL LAYOUT
+   ========================================================= */
+
+.home-page {
+    width: 100%;
+    min-height: calc(100vh - 120px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 1.2rem 3rem 1.5rem;
+
+    box-sizing: border-box;
+}
+
+
+/* ---------- PAGE ICON ---------- */
+
+.home-icon {
+    display: none;
+}
+
+
+/* ---------- PAGE TITLE ---------- */
+
+.home-page h1 {
+    margin: 0.8rem 0 1.2rem;
+
+    font-size: clamp(2rem, 3vw, 3rem);
+
+    text-align: center;
+
+    line-height: 1.1;
+}
+
+
+/* ---------- FORM ---------- */
+
+.home-form {
+    width: 100%;
+    max-width: 1250px;
+
+    display: grid;
+
+    /* 3 columns on desktop */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 1.25rem 1.5rem;
+
+    padding: 1.6rem 2rem;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(28, 25, 48, 0.94),
+            rgba(38, 22, 55, 0.90)
+        );
+
+    border: 1.5px solid rgba(125, 28, 255, 0.75);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 10px 35px rgba(125, 28, 255, 0.12),
+        inset 0 0 25px rgba(125, 28, 255, 0.035);
+
+    margin: 0 auto;
+}
+
+
+/* ---------- EACH FIELD ---------- */
+
+.home-form .form-field {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.45rem;
+}
+
+
+/* ---------- LABEL ---------- */
+
+.home-form .form-field label {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+
+    color: #c9b7f5;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+/* Icons inside labels */
+
+.home-form .form-field label svg {
+    width: 22px;
+    height: 22px;
+
+    flex-shrink: 0;
+
+    color: #23deff;
+}
+
+
+/* Rating icon */
+
+.home-form .form-field:nth-child(5) label svg {
+    color: #ffe600;
+}
+
+
+/* Small text like "(per night, in ₹)" */
+
+.home-form .form-field label span {
+    font-size: 0.78rem;
+    color: #a99bc9;
+    font-weight: 600;
+}
+
+
+/* ---------- INPUTS ---------- */
+
+.home-form input,
+.home-form textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            100deg,
+            #1d1830,
+            #211b36
+        );
+
+    color: #e8e0ff;
+
+    border: 1.5px solid #59308d;
+
+    border-radius: 15px;
+
+    padding: 0.85rem 1rem;
+
+    font-size: 0.95rem;
+
+    font-family:
+        'Inter',
+        'Poppins',
+        'Montserrat',
+        sans-serif;
+
+    outline: none;
+
+    box-shadow:
+        0 3px 12px rgba(125, 28, 255, 0.06);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* Input height */
+
+.home-form input {
+    height: 52px;
+}
+
+
+/* ---------- TEXTAREA ---------- */
+
+.home-form textarea {
+    height: 52px;
+
+    min-height: 52px;
+    max-height: 100px;
+
+    resize: vertical;
+}
+
+
+/* ---------- PLACEHOLDER ---------- */
+
+.home-form input::placeholder,
+.home-form textarea::placeholder {
+    color: #9d91bf;
+    opacity: 1;
+}
+
+
+/* ---------- FOCUS ---------- */
+
+.home-form input:focus,
+.home-form textarea:focus {
+    border-color: #23deff;
+
+    box-shadow:
+        0 0 0 3px rgba(35, 222, 255, 0.10),
+        0 5px 20px rgba(125, 28, 255, 0.13);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.home-form .description-field {
+    grid-column: span 2;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+   ========================================================= */
+
+.home-form .home-submit {
+    width: 100%;
+    height: 52px;
+
+    align-self: end;
+
+    border: none;
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #7d1cff,
+            #a781fa 55%,
+            #23deff
+        );
+
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 800;
+
+    font-family:
+        'Poppins',
+        'Inter',
+        sans-serif;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.6rem;
+
+    box-shadow:
+        0 6px 22px rgba(125, 28, 255, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.home-form .home-submit svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+.home-form .home-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(125, 28, 255, 0.35);
+}
+
+
+/* =========================================================
+   BACK LINK
+   ========================================================= */
+
+.back-link {
+    margin-top: 1rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    color: #a781fa;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+
+.back-link svg {
+    width: 18px;
+    height: 18px;
+}
+
+
+.back-link:hover {
+    color: #23deff;
+}
+
+
+/* =========================================================
+   DESKTOP — BIG SCREENS
+   ========================================================= */
+
+@media (min-width: 1300px) {
+
+    .home-page {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .home-form {
+        max-width: 1400px;
+
+        padding: 1.5rem 2.5rem;
+
+        gap: 1.15rem 1.8rem;
+    }
+
+    .home-form input {
+        height: 50px;
+    }
+
+    .home-form textarea {
+        height: 50px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .home-page {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .home-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .home-form .description-field {
+        grid-column: span 2;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .home-page {
+        padding: 1rem 0.8rem;
+    }
+
+    .home-page h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .home-form {
+        grid-template-columns: 1fr;
+
+        padding: 1.2rem;
+
+        border-radius: 20px;
+
+        gap: 1rem;
+    }
+
+    .home-form .description-field {
+        grid-column: span 1;
+    }
+
+    .home-form input {
+        height: 50px;
+    }
+
+    .home-form textarea {
+        height: 70px;
+    }
+}
+/* =========================================
+   LOGOUT BUTTON
+========================================= */
+
+form.logout-form {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+
+    display: block;
+
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+form.logout-form .logout-btn {
+    width: auto;
+    min-width: auto;
+
+    padding: 0.6rem 1rem;
+
+    margin: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 0.5rem;
+
+    background: linear-gradient(
+        to right,
+        #23deff,
+        #a781fa,
+        #7d1cff
+    );
+
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(125, 28, 255, 0.25);
+
+    transition: all 0.2s ease;
+}
+
+form.logout-form .logout-btn:hover {
+    box-shadow: 0 4px 14px rgba(125, 28, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+
+.signup-page {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.home-icon {
+  width: 70px;
+  height: 70px;
+  filter: drop-shadow(0 0 18px rgba(125, 28, 255, 0.4));
+}
+
+.signup-page h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.8rem;
+}
+
+.signup-page h1 svg {
+  width: 28px;
+  height: 28px;
+  color: #23deff;
+}
+
+.home-form {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  background: linear-gradient(92deg, rgba(33,29,44,0.9) 52%, rgba(107,43,221,0.08) 100%);
+  padding: 2.5rem 2.2rem;
+  border-radius: 28px;
+  box-shadow: 0 9px 34px rgba(125,28,255,0.12), 0 2px 11px rgba(35,222,255,0.1);
+  border: 2px solid #7d1cff44;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #c689fa;
+  font-size: 0.95rem;
+}
+
+.form-field label svg {
+  width: 18px;
+  height: 18px;
+  color: #23deff;
+}
+
+.form-field input[type="text"],
+.form-field input[type="Email"],
+.form-field input[type="Password"] {
+  background: linear-gradient(92deg, #201a33 70%, #26243a 100%);
+  color: #e2e2e2;
+  padding: 0.85rem 1.1rem;
+  border: 1.8px solid #513079;
+  border-radius: 14px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.17s, box-shadow 0.13s;
+}
+
+.form-field input:focus {
+  border-color: #22e0ff;
+  box-shadow: 0 0 0 3px rgba(35,222,255,0.15);
+}
+
+.user-type-field p {
+  color: #aba4ec;
+  font-size: 0.95rem;
+  margin: 0 0 0.6rem;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #e3d0ff;
+}
+
+.radio-group input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #7d1cff;
+  cursor: pointer;
+}
+
+.checkbox-field label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  color: #aba4ec;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #7d1cff;
+  cursor: pointer;
+}
+
+.signup-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(96deg, #7d1cff 0%, #a781fa 60%, #23deff 100%);
+  color: #181828;
+  font-weight: 800;
+  padding: 1rem 2rem;
+  border-radius: 2em;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 25px rgba(125,28,255,0.2);
+  transition: transform 0.15s, box-shadow 0.18s;
+  margin-top: 0.5rem;
+}
+
+.signup-submit svg {
+  width: 20px;
+  height: 20px;
+}
+
+.signup-submit:hover {
+  transform: scale(1.03) translateY(-2px);
+  box-shadow: 0 9px 30px rgba(162, 36, 255, 0.3);
+}
+
+@media (max-width: 600px) {
+  .home-form {
+    padding: 1.6rem 1.2rem;
+  }
+  .radio-group {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+
+/* =========================================
+   SIGN UP PAGE
+   ========================================= */
+
+/* Signup heading */
+h1:has(+ .home-form) {
+    width: 100%;
+    text-align: center;
+    margin: 2.5rem auto 1.5rem;
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+h1:has(+ .home-form) span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #a781fa,
+        #7d1cff,
+        #23deff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+h1:has(+ .home-form) svg {
+    width: 28px;
+    height: 28px;
+    color: #23deff;
+}
+
+
+/* =========================================
+   SIGN UP FORM
+   ========================================= */
+
+form.home-form {
+    width: min(1000px, calc(100% - 40px));
+    max-width: 1000px;
+
+    margin: 0 auto 2rem;
+    padding: 1.8rem 2.2rem;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    column-gap: 1.5rem;
+    row-gap: 1rem;
+
+    align-items: start;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(25, 22, 43, 0.95),
+            rgba(55, 25, 90, 0.38)
+        );
+
+    border: 1px solid rgba(125, 28, 255, 0.65);
+    border-radius: 24px;
+
+    box-shadow:
+        0 10px 40px rgba(125, 28, 255, 0.14),
+        0 0 35px rgba(35, 222, 255, 0.04);
+
+    backdrop-filter: blur(10px);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   EACH FIELD
+   ========================================= */
+
+form.home-form .form-field {
+    width: 100%;
+    min-width: 0;
+}
+
+form.home-form .form-field label {
+    display: block;
+
+    margin-bottom: 0.4rem;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    color: #cbbdf0;
+}
+
+
+/* Inputs */
+
+form.home-form input[type="text"],
+form.home-form input[type="Email"],
+form.home-form input[type="Password"] {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 1rem;
+
+    box-sizing: border-box;
+
+    border-radius: 13px;
+    border: 1px solid rgba(167, 129, 250, 0.55);
+
+    background: rgba(30, 25, 48, 0.75);
+
+    color: #eee8ff;
+
+    font-size: 0.95rem;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Placeholder */
+
+form.home-form input::placeholder {
+    color: #9285b3;
+}
+
+
+/* Input focus */
+
+form.home-form input[type="text"]:focus,
+form.home-form input[type="Email"]:focus,
+form.home-form input[type="Password"]:focus {
+    border-color: #23deff;
+
+    background: rgba(35, 30, 58, 0.9);
+
+    box-shadow:
+        0 0 0 3px rgba(35, 222, 255, 0.08),
+        0 0 18px rgba(125, 28, 255, 0.15);
+}
+
+
+/* =========================================
+   USER TYPE
+   ========================================= */
+
+form.home-form .user-type-field {
+    padding-top: 0.1rem;
+}
+
+form.home-form .user-type-field > p {
+    margin: 0 0 0.45rem;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    color: #cbbdf0;
+}
+
+form.home-form .radio-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    height: 50px;
+}
+
+form.home-form .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+
+    margin: 0;
+
+    color: #d8cff0;
+
+    cursor: pointer;
+}
+
+form.home-form input[type="radio"] {
+    width: 18px;
+    height: 18px;
+
+    accent-color: #8b35ff;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   TERMS & CONDITIONS
+   ========================================= */
+
+form.home-form .checkbox-field {
+    display: flex;
+    align-items: center;
+
+    min-height: 50px;
+}
+
+form.home-form .checkbox-field label {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+
+    margin: 0;
+
+    color: #cbbdf0;
+
+    cursor: pointer;
+}
+
+form.home-form input[type="checkbox"] {
+    width: 19px;
+    height: 19px;
+
+    accent-color: #8b35ff;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   SIGN UP BUTTON
+   ========================================= */
+
+form.home-form .signup-submit {
+    width: 100%;
+    height: 50px;
+
+    border: none;
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7d1cff,
+            #a781fa,
+            #23deff
+        );
+
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 18px rgba(125, 28, 255, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+form.home-form .signup-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(125, 28, 255, 0.32);
+}
+
+form.home-form .signup-submit svg {
+    width: 19px;
+    height: 19px;
+}
+
+
+/* =========================================
+   DESKTOP LAYOUT
+   ========================================= */
+
+/* Terms + button ko same row me rakho */
+form.home-form .checkbox-field {
+    grid-column: 1;
+}
+
+form.home-form .signup-submit {
+    grid-column: 2;
+}
+
+
+/* =========================================
+   SMALL SCREEN
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    h1:has(+ .home-form) {
+        margin-top: 2rem;
+        font-size: 1.6rem;
+    }
+
+    form.home-form {
+        width: calc(100% - 24px);
+
+        padding: 1.4rem;
+
+        grid-template-columns: 1fr;
+
+        row-gap: 1rem;
+    }
+
+    form.home-form .checkbox-field,
+    form.home-form .signup-submit {
+        grid-column: 1;
+    }
+
+    form.home-form .signup-submit {
+        margin-top: 0.2rem;
+    }
+}
+
+/* =========================
+   SIGNUP PAGE HEADING
+========================= */
+
+.signup-page {
+    width: 100%;
+}
+
+/* Heading ko form ke exact center mein rakho */
+.signup-page > h1 {
+    width: 100%;
+    margin: 2rem 0 1.5rem 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    text-align: center !important;
+}
+
+/* Icon + text */
+.signup-page > h1 > span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Diamond icon */
+.signup-page > h1 svg {
+    width: 28px !important;
+    height: 28px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    flex-shrink: 0;
+}
+
+/* ---------- NAVBAR ---------- */
+
+.nav-pill{
+  padding:12px 22px;
+  border-radius:16px;
+  color:#ddd6fe;
+  font-weight:600;
+  background:rgba(255,255,255,.04);
+  border:1px solid transparent;
+  transition:.28s;
+}
+
+.nav-pill:hover{
+  color:white;
+  border-color:#8b5cf6;
+  background:rgba(139,92,246,.18);
+  transform:translateY(-2px);
+}
+
+.active{
+  color:#22d3ee;
+  border-color:#22d3ee55;
+}
+
+.nav-btn{
+  padding:12px 24px;
+  border-radius:16px;
+  font-weight:700;
+  color:white;
+  background:linear-gradient(135deg,#22d3ee,#8b5cf6,#7c3aed);
+  box-shadow:0 10px 25px rgba(124,58,237,.35);
+  transition:.3s;
+}
+
+.nav-btn:hover{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 14px 35px rgba(34,211,238,.35);
+}
+
+.logout-btn{
+  padding:12px 26px;
+  border:none;
+  border-radius:16px;
+  font-weight:700;
+  color:white;
+  cursor:pointer;
+  background:linear-gradient(135deg,#7c3aed,#22d3ee);
+  box-shadow:0 10px 25px rgba(34,211,238,.25);
+  transition:.3s;
+}
+
+.logout-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 35px rgba(124,58,237,.35);
+}
+
+/* ---------- HOME CARDS ---------- */
+
+.home-card{
+  background:linear-gradient(180deg,#24173d,#17142d);
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid rgba(139,92,246,.25);
+  transition:.35s;
+}
+
+.home-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 40px rgba(124,58,237,.35);
+}
+
+.home-card img{
+  height:220px;
+  width:100%;
+  object-fit:cover;
+}
+
+.price{
+  font-weight:800;
+  font-size:20px;
+  background:linear-gradient(90deg,#22d3ee,#a855f7);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}

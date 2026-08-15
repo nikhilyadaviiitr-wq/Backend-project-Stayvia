@@ -1,0 +1,76 @@
+<%- include('../partials/head') %>
+  </head>
+  <body>
+      <%- include('../partials/nav') %>
+      <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-6xl">
+          <h2 class="text-3xl text-red-500 font-bold text-center mb-6">
+              Details of <%= home.HouseName %>:
+          </h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="rounded-lg overflow-hidden">
+                  <img src="<%= home.PhotoURL %>" alt="<%= home.HouseName %>" class="w-full h-96 object-cover">
+              </div>
+              
+              <div class="space-y-6">
+                  <!-- Description sabse ooper liya gaya -->
+                  <div class="border-b pb-4">
+                      <h3 class="text-2xl font-semibold mb-2">Description</h3>
+                      <p class="text-gray-700"><%= home.Description ? home.Description : "No description available." %></p>
+                  </div>
+                  
+                  <div class="border-b pb-4">
+                      <h3 class="text-2xl font-semibold mb-2">Location</h3>
+                      <p class="text-gray-600"><%= home.Location %></p>
+                  </div>
+                  
+                  <div class="border-b pb-4">
+                      <h3 class="text-2xl font-semibold mb-2">Price</h3>
+                      <p class="text-green-600 text-xl font-bold">₹<%= home.Price %> / night</p>
+                  </div>
+                  
+                  <div class="border-b pb-4">
+                      <h3 class="text-2xl font-semibold mb-2">Rating</h3>
+                      <div class="flex items-center">
+                          <span class="text-yellow-400 text-xl">★</span>
+                          <span class="ml-2 text-lg"><%= home.Rating %> / 5</span>
+                      </div>
+                  </div>
+                  
+                  <div class="w-full mt-4 flex items-center justify-end gap-2">
+                    <%if (isLoggedIn && user.UserType==="Guest") {%>
+                            <form action="/store/book/<%= home.id || home._id %>" method="POST" class="book-form">
+                                <button 
+                                    type="submit"
+                                    class="book-btn px-2.5 py-1 rounded text-[11px] font-semibold bg-gradient-to-r from-[#23deff] via-[#a781fa] to-[#7d1cff] text-white shadow-sm hover:shadow-md transition-all duration-200"
+                                >
+                                    Book now
+                                </button>
+                            </form>
+                            <div class="flex items-center h-full">
+                                <%- include('../partials/favourite', {home: home}) %>
+                            </div>
+                            <%}else {%>
+                            <form action="/login" method="GET" class="book-form">
+                                <button 
+                                    type="submit"
+                                    class="book-btn px-2.5 py-1 rounded text-[11px] font-semibold bg-gradient-to-r from-[#23deff] via-[#a781fa] to-[#7d1cff] text-white shadow-sm hover:shadow-md transition-all duration-200"
+                                >
+                                    Book now
+                                </button>
+                            </form>
+                            <div class="flex items-center h-full">
+                                <form action="/login" method="GET" class="book-form">
+  <input type="hidden" name="homeId" value="<%= home.id %>">
+  <button type="submit" class="book-btn px-2.5 py-1 rounded text-[11px] font-semibold bg-gradient-to-r from-[#23deff] via-[#a781fa] to-[#7d1cff] text-white shadow-sm hover:shadow-md transition-all duration-200">
+      Add to Favourite
+  </button>
+</form>
+                            </div>
+                            <%}%>
+                </div>
+              </div>
+          </div>
+      </main>
+  </body>
+</html>

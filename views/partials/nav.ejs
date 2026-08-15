@@ -1,0 +1,45 @@
+<nav class="max-w-7xl mx-auto mt-4 px-6 py-4
+            rounded-3xl border border-[#7d1cff33]
+            bg-white/5 backdrop-blur-xl
+            shadow-[0_8px_40px_rgba(0,0,0,.35)]
+            flex items-center justify-between">
+
+  <!-- Logo -->
+  <a href="/store" class="flex items-center gap-3">
+    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 via-violet-500 to-purple-700 flex items-center justify-center shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5l9 7.5v1.185a1.5 1.5 0 01-.605 1.213l-7.2 5.41A2.5 2.5 0 0110 18.5a2.5 2.5 0 01-1.195-2.692l-7.2-5.41A1.5 1.5 0 012 9.185V8L10 .5z"/>
+      </svg>
+    </div>
+
+    <h2 class="text-3xl font-extrabold bg-gradient-to-r from-cyan-300 via-fuchsia-300 to-violet-400 bg-clip-text text-transparent">
+      Stayvia
+    </h2>
+  </a>
+
+  <!-- Menu -->
+  <div class="flex items-center gap-3">
+
+    <a href="/store" class="nav-pill active">🏠 Home</a>
+
+    <% if(isLoggedIn && user && user.UserType==="Guest"){ %>
+      <a href="/store/favourite-list" class="nav-pill">❤️ Favourites</a>
+      <a href="/store/bookings" class="nav-pill">📅 Bookings</a>
+    <% } %>
+
+    <% if(isLoggedIn && user && user.UserType==="Host"){ %>
+      <a href="/host/host-homes" class="nav-pill">🏡 Hosted</a>
+      <a href="/host/add-home" class="nav-btn">＋ Add Home</a>
+    <% } %>
+
+    <% if(!isLoggedIn){ %>
+      <a href="/signup" class="nav-pill">Sign Up</a>
+      <a href="/login" class="nav-btn">Login</a>
+    <% } else { %>
+      <form action="/logout" method="POST">
+        <button class="logout-btn">Logout</button>
+      </form>
+    <% } %>
+
+  </div>
+</nav>

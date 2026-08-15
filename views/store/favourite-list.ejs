@@ -1,0 +1,121 @@
+<%- include("../partials/head") %>
+<%- include("../partials/nav") %>
+</header>
+<main class="flex flex-col items-center bg-gradient-to-br from-[#222032e2] via-[#27142fa9] to-[#27142f] backdrop-blur-md gap-8 py-14 px-6 min-h-[70vh] rounded-[2.5rem] shadow-xl mt-10 mb-10 max-w-6xl mx-auto">
+    <h1 class="text-4xl font-extrabold uppercase tracking-widest bg-gradient-to-r from-[#c689fa] via-[#9f58ff] to-[#23deff] text-transparent bg-clip-text mb-3">
+        Here are your favourite homes:
+    </h1>
+    <% if (favourites.length=== 0) { %>
+        <div class="text-lg text-[#9d88c6] font-medium text-center bg-white/5 py-10 rounded-xl ring-1 ring-[#8035e8]/20 shadow-md w-full">
+            No homes in favourites yet.
+        </div>
+    <% } else { %>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-9 w-full">
+            <% favourites.forEach(home => { %>
+                <div class="rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-[#24193b] via-[#282044da] to-[#181529f4] relative hover:scale-[1.025] hover:shadow-violet-400/40 transition-all ring-2 ring-[#7d1cff22] cursor-pointer group home-card" data-href="/store/<%= home.id %>">
+                    <a href="/store/<%= home.id %>" class="w-full h-52 bg-[#24193b]/90 flex items-center justify-center overflow-hidden relative block">
+                        <% if (home.PhotoURL) { %>
+                            <img 
+                                src="<%= home.PhotoURL %>" 
+                                alt="<%= home.HouseName %> photo" 
+                                class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                            />
+                        <% } else { %>
+                            <div class="flex items-center justify-center w-full h-full">
+                                <span class="text-3xl">🏠</span>
+                            </div>
+                        <% } %>
+                        <span class="absolute top-4 right-4 bg-[#20113b]/80 text-[#e3d0ff] px-3 py-1 rounded-2xl text-xs font-semibold shadow ring-1 ring-[#a17afe33] flex items-center gap-1">
+                            <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                class="w-4 h-4 text-[#f3e766]" 
+                                fill="currentColor" 
+                                viewBox="0 0 20 20"
+                            >
+                                <path d="M10 15.27L16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/>
+                            </svg>
+                            <span><%= home.Rating ? home.Rating : "N/A" %></span>
+                        </span>
+                    </a>
+                    
+                    <div class="p-6 flex flex-col gap-2 items-start">
+                        <div class="flex w-full items-center justify-between">
+                            <span 
+                                class="font-extrabold text-xl text-[#e3d0ff] tracking-wide truncate" 
+                                title="<%= home.HouseName %>"
+                            >
+                                <%= home.HouseName %>
+                            </span>
+                            <% if (home.Price) { %>
+                                <span class="bg-gradient-to-r from-[#23deff] via-[#a781fa] to-[#7d1cff] bg-clip-text text-transparent font-bold text-lg drop-shadow-md">
+                                    ₹ <%= Number(home.Price).toLocaleString("en-IN", { minimumFractionDigits: 2}) %> 
+                                    <span class="text-xs font-semibold text-[#aea4df]">/night</span>
+                                </span>
+                            <% } %>
+                        </div>
+                        <div class="flex items-center gap-2 mt-1">
+                            <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                class="w-4 h-4 inline align-middle text-[#23deff]" 
+                                fill="none" 
+                                viewBox="0 0 24 24" 
+                                stroke="currentColor"
+                            >
+                                <path d="M12 2C8.134 2 5 5.134 5 9c0 3.866 5.207 11.295 6.156 12.523a1 1 0 001.689 0C13.793 20.295 19 12.866 19 9c0-3.866-3.134-7-7-7zm0 9a2 2 0 110-4 2 2 0 010 4z"/>
+                            </svg>
+                            <span class="text-[#b6a3e8] text-sm">
+                                <%= home.Location ? home.Location : "Location Unknown" %>
+                            </span>
+                        </div>
+                        <div class="w-full mt-4 flex items-center justify-end gap-2">
+                            <form action="/store/<%= home.id %>" method="GET" class="book-form">
+                                <button 
+                                    type="submit"
+                                    class="book-btn px-2.5 py-1 rounded text-[11px] font-semibold bg-gradient-to-r from-[#23deff] via-[#a781fa] to-[#7d1cff] text-white shadow-sm hover:shadow-md transition-all duration-200"
+                                >
+                                    Details
+                                </button>
+                            </form>
+                        
+                            <form action="/book/<%= home.id || home._id %>" method="POST" class="book-form">
+                                <button 
+                                    type="submit"
+                                    class="book-btn px-2.5 py-1 rounded text-[11px] font-semibold bg-gradient-to-r from-[#23deff] via-[#a781fa] to-[#7d1cff] text-white shadow-sm hover:shadow-md transition-all duration-200"
+                                >
+                                    Book now
+                                </button>
+                            </form>
+                            <form action="/store/favourite-list/delete/<%= home.id%>" method="POST" class="book-form">
+                                <button 
+                                    type="submit"
+                                    class="book-btn px-2.5 py-1 rounded text-[11px] font-semibold bg-gradient-to-r from-[#23deff] via-[#a781fa] to-[#7d1cff] text-white shadow-sm hover:shadow-md transition-all duration-200"
+                                >
+                                    Remove from favourites
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                                </div>
+            <% }) %>
+        </div>
+    <% } %>
+</main>
+
+<script>
+    document.addEventListener('click', function(e) {
+        try {
+            const card = e.target.closest('.home-card');
+            if (!card) return;
+            if (e.target.closest('a, button, form, input, textarea, select')) return;
+            const href = card.dataset.href;
+            if (href) window.location.href = href;
+        } catch (err) {
+            console.error(err);
+        }
+    });
+</script>
+</body>
+</html>
+</main>
+</body>
+</html>
