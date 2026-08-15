@@ -56,27 +56,30 @@ exports.postEditHome = function(req, res, next) {
             console.log("Home not found for updating.");
             return res.redirect("/host/host-homes");
         }
+
         home.HouseName = HouseName;
         home.Price = Price;
         home.Location = Location;
         home.Rating = Rating;
-        home.PhotoURL = PhotoURL;
         home.Description = Description;
 
-                if (req.file) {
-                // delete previous file if exists (home.PhotoURL stores '/uploads/filename')
-                if (home.PhotoURL) {
-                        const existing = home.PhotoURL.startsWith('/uploads/') ? home.PhotoURL.replace('/uploads/', '') : path.basename(home.PhotoURL);
-                        const existingPath = path.join(rootDir, 'uploads', existing);
-                        fs.unlink(existingPath, (err) => {
-                            if (err) {
-                                console.log("Error while deleting file ", err);
-                            }
-                        });
-                }
-                home.PhotoURL = `/uploads/${req.file.filename}`;
-            }
+        if (req.file) {
+            if (home.PhotoURL) {
+                const existing = home.PhotoURL.startsWith('/uploads/')
+                    ? home.PhotoURL.replace('/uploads/', '')
+                    : path.basename(home.PhotoURL);
+                const existingPath = path.join(rootDir, 'uploads', existing);
 
+                fs.unlink(existingPath, (err) => {
+                    if (err && err.code !== 'ENOENT') {
+                        console.log("Error while deleting file ", err);
+                    }
+                });
+            }
+            home.PhotoURL = `/uploads/${req.file.filename}`;
+        } else if (PhotoURL && PhotoURL.trim() !== '') {
+            home.PhotoURL = PhotoURL;
+        }
 
         return home.save();
     }).then(() => {
