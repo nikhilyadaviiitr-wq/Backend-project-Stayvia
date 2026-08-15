@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const connectDB = require("./utils/databaseUtil");
 const rootDir = require("./utils/rootpath");
@@ -6,6 +8,8 @@ const session = require("express-session");
 const connectMongo = require("connect-mongo");
 const MongoStore = connectMongo.default || connectMongo;
 const multer = require("multer");
+const cloudinary = require("./utils/cloudinary");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 const { StoreRouter } = require("./controllers/routes/store");
 const { HostRouter } = require("./controllers/routes/host");
@@ -17,22 +21,12 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-const randomString = (length) => {
-  const characters = 'abcdefghijklmnopqrstuvwxyz';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
-}
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "stayvia-homes",
+    allowed_formats: ["jpg", "png", "jpeg"],
   },
-  filename: (req, file, cb) => {
-    cb(null, randomString(10) + '-' + file.originalname);
-  }
 });
 
 const fileFilter = (req, file, cb) => {
@@ -49,16 +43,13 @@ const multerOptions = {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(rootDir, "public")));
-app.use("/uploads", express.static(path.join(rootDir, 'uploads')))
-app.use("/host/uploads", express.static(path.join(rootDir, 'uploads')))
-app.use("/homes/uploads", express.static(path.join(rootDir, 'uploads')))
 
 app.use(session({
-    secret: "hello",
+    secret: process.env.SESSION_SECRET || "hello",
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: "mongodb://localhost:27017/airbnb",
+        mongoUrl: process.env.MONGO_URI || "mongodb://localhost:27017/airbnb",
         collectionName: "sessions"
     }),
     cookie: {
@@ -88,7 +79,7 @@ app.use(AuthRouter);
 
 app.use("/", error404);
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const startServer = async () => {
     await connectDB();
@@ -98,3 +89,5 @@ const startServer = async () => {
 };
 
 startServer();
+
+module.exports.multerOptions = multerOptions;
