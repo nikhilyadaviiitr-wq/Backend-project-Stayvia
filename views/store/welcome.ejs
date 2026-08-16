@@ -7,7 +7,7 @@
     </h1>
     <% if (registeredHomes.length === 0) { %>
         <div class="text-lg text-[#9d88c6] font-medium text-center bg-white/5 py-10 rounded-xl ring-1 ring-[#8035e8]/20 shadow-md w-full">
-            No homes registered yet. <%if(user.UserType==="Host"){%> Be the first to 
+            No homes registered yet. <%if(user && user.UserType==="Host"){%> Be the first to 
             <a href="/host/add-home" class="text-[#23deff] underline font-semibold">add one!</a>
         </div>
     <% }} else { %>
@@ -76,7 +76,7 @@
                                     Details
                                 </button>
                             </form>
-                            <%if (isLoggedIn && user.UserType==="Guest") {%>
+                            <%if (isLoggedIn && user && user.UserType==="Guest") {%>
                             <form action="/store/book/<%= home.id || home._id %>" method="POST" class="book-form">
                                 <button 
                                     type="submit"

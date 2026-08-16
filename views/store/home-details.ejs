@@ -38,7 +38,7 @@
                   </div>
                   
                   <div class="w-full mt-4 flex items-center justify-end gap-2">
-                    <%if (isLoggedIn && user.UserType==="Guest") {%>
+                    <%if (isLoggedIn && user && user.UserType==="Guest") {%>
                             <form action="/store/book/<%= home.id || home._id %>" method="POST" class="book-form">
                                 <button 
                                     type="submit"
