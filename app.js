@@ -64,6 +64,16 @@ app.use("/store/favourite-list", (req, res, next) => {
     next();
 });
 
+app.get("/debug-files", (req, res) => {
+    const fs = require("fs");
+    try {
+        const files = fs.readdirSync(path.join(rootDir, "public"));
+        res.json({ publicFolder: files, rootDir: rootDir });
+    } catch (err) {
+        res.json({ error: err.message, rootDir: rootDir });
+    }
+});
+
 app.get("/", (req, res) => {
     res.redirect("/store");
 });
