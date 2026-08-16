@@ -64,6 +64,10 @@ app.use("/store/favourite-list", (req, res, next) => {
     next();
 });
 
+app.get("/", (req, res) => {
+    res.redirect("/store");
+});
+
 app.use("/store", StoreRouter);
 
 app.use("/host", (req, res, next) => {
