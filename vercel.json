@@ -10,13 +10,7 @@
     }
   ],
   "routes": [
-    {
-      "src": "/output.css",
-      "dest": "/public/output.css"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/app.js"
-    }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/app.js" }
   ]
 }
