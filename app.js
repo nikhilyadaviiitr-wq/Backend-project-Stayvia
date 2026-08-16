@@ -90,4 +90,4 @@ const startServer = async () => {
 
 startServer();
 
-module.exports.multerOptions = multerOptions;
+module.exports = app;
