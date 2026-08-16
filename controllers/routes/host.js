@@ -16,7 +16,15 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage: storage });
 
 HostRouter.get('/add-home', home.getAddHome);
-HostRouter.post('/add-home', upload.single('Photo'), home.postAddHome);
+HostRouter.post('/add-home', (req, res, next) => {
+    upload.single('Photo')(req, res, (err) => {
+        if (err) {
+            console.log("Multer/Cloudinary upload error:", err.message || JSON.stringify(err));
+            return res.status(500).send("Upload Error: " + (err.message || JSON.stringify(err)));
+        }
+        next();
+    });
+}, home.postAddHome);
 HostRouter.get('/host-homes', home.getHostHomes);
 HostRouter.get('/edit-home/:homeId', home.getEditHome);
 HostRouter.post('/edit-home', upload.single('Photo'), home.postEditHome);

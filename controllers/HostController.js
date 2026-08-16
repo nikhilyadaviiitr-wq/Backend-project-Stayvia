@@ -7,9 +7,9 @@ exports.getAddHome = function(req, res, next) {
 }
 
 exports.postAddHome = function(req, res, next) {
-    console.log(req.body);
+    console.log("Body:", req.body);
+    console.log("File:", req.file);
     const { HouseName, Price, Location, Rating, PhotoURL, Description } = req.body;
-    // If a file was uploaded via Cloudinary, req.file.path is the Cloudinary URL
     let photoUrlValue = PhotoURL;
     if (req.file) {
         photoUrlValue = req.file.path;
@@ -19,8 +19,8 @@ exports.postAddHome = function(req, res, next) {
         console.log("Home Added Successfully");
         res.redirect("/host/host-homes");
     }).catch((error) => {
-        console.log("Error adding home", error);
-        res.redirect("/host/add-home");
+        console.log("Error adding home:", error.message || JSON.stringify(error));
+        res.status(500).send("Error: " + (error.message || JSON.stringify(error)));
     });
 }
 
