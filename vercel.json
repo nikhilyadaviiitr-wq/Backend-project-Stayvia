@@ -9,5 +9,14 @@
       }
     }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "/app.js" }]
+  "routes": [
+    {
+      "src": "/output.css",
+      "dest": "/public/output.css"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/app.js"
+    }
+  ]
 }
