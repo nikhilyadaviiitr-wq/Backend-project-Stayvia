@@ -85,13 +85,12 @@ app.use("/", error404);
 
 const port = process.env.PORT || 3000;
 
-const startServer = async () => {
-    await connectDB();
+connectDB();
+
+if (process.env.VERCEL !== "1") {
     app.listen(port, () => {
         console.log("APP STARTED !!");
     });
-};
-
-startServer();
+}
 
 module.exports = app;
